@@ -34,7 +34,7 @@ export default function Home() {
               className="w-full max-w-md"
             />
             <a
-              href="https://s.click.aliexpress.com/e/_EwN4dte"
+              href="https://s.click.aliexpress.com/e/_EvVOPmC"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 w-52 text-center text-sm font-bold py-2 px-4 border-4 border-black shadow-lg retro-button bg-red-600 text-white"
@@ -84,7 +84,7 @@ export default function Home() {
             ☕ Donate
           </a>
           <a
-            href="https://s.click.aliexpress.com/e/_EwN4dte"
+            href="https://s.click.aliexpress.com/e/_EvVOPmC"
             target="_blank"
             rel="noopener noreferrer"
             className="w-52 text-center text-sm font-bold py-2 px-4 border-4 border-black shadow-lg retro-button bg-red-600 text-white"
