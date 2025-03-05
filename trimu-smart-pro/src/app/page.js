@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default function SpecsPage() {
+export default function Home() {
   return (
     <>
       <Head>
@@ -23,7 +23,7 @@ export default function SpecsPage() {
         <meta property="og:image" content="/images/og-image.jpg" />
         <link rel="canonical" href="https://trimui-smart-pro-hub.vercel.app/" />
       </Head>
-      <div className="flex flex-col items-center justify-center min-h-screen p-6">
+      <div className="flex flex-col items-center justify-center min-h-screen p-6 pt-12">
         {/* Top Section: Two Columns */}
         <div className="flex flex-col md:flex-row items-center justify-center w-full">
           {/* Left Column: Image and Buy Button */}
@@ -42,7 +42,7 @@ export default function SpecsPage() {
               Buy on AliExpress
             </a>
           </div>
-          {/* Right Column: Title, Description and Start Button (sin divisor) */}
+          {/* Right Column: Title, Description and Start Button */}
           <div className="md:w-1/2 flex flex-col items-center text-center mt-6 md:mt-0">
             <h1 className="text-4xl mb-4 text-retroPurple dark:text-retroYellow">
               TrimUI Smart Pro Hub
@@ -63,7 +63,7 @@ export default function SpecsPage() {
         <hr className="w-48 border-t-2 border-gray-500 my-8" />
 
         {/* Support Section */}
-        <p className="text-sm text-gray-700 dark:text-gray-300">
+        <p className="text-xs text-gray-700 dark:text-gray-300">
           Enjoying this project? Support me on YouTube, Ko‑fi, or by shopping on AliExpress at no extra cost!
         </p>
         <div className="mt-4 flex flex-col md:flex-row gap-3">
