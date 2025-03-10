@@ -46,7 +46,7 @@ export default function FirmwaresPage() {
           title="Gamma OS Core" 
           description="Beta release of Gamma OS Core firmware." 
           link="https://github.com/TheGammaSqueeze/GammaOSCore/releases/tag/beta3_a133p" 
-          badge="Beta"
+          badge={["Beta", "Android"]}
         />
         <FirmwareCard 
           title="Tomato OS" 
@@ -99,20 +99,41 @@ export default function FirmwaresPage() {
   );
 }
 
-// Reusable Firmware Card Component with Optional Badge
 function FirmwareCard({ title, description, link, badge }) {
   return (
     <div className="border-4 border-black p-4 bg-retroBlue text-white text-center">
       <h3 className="text-lg font-bold">{title}</h3>
       {badge && (
-        <div className="mt-2 mb-2">
-          <span
-            className={`text-xs font-bold px-2 py-1 border-2 border-black inline-block ${
-              badge === "Deprecated" ? "bg-red-500 text-white" : "bg-yellow-400 text-black"
-            }`}
-          >
-            {badge}
-          </span>
+        <div className="mt-2 mb-2 flex justify-center gap-2">
+          {Array.isArray(badge)
+            ? badge.map((b, i) => (
+                <span
+                  key={i}
+                  className={`text-xs font-bold px-2 py-1 border-2 border-black inline-block ${
+                    b === "Deprecated"
+                      ? "bg-red-500 text-white"
+                      : b === "Android"
+                      ? "bg-green-500 text-white"
+                      : "bg-yellow-400 text-black"
+                  }`}
+                >
+                  {b}
+                </span>
+              ))
+            : (
+              <span
+                className={`text-xs font-bold px-2 py-1 border-2 border-black inline-block ${
+                  badge === "Deprecated"
+                    ? "bg-red-500 text-white"
+                    : badge === "Android"
+                    ? "bg-green-500 text-white"
+                    : "bg-yellow-400 text-black"
+                }`}
+              >
+                {badge}
+              </span>
+            )
+          }
         </div>
       )}
       <p className="text-sm">{description}</p>

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("darkMode");
@@ -47,8 +48,13 @@ export default function Navbar() {
           {/* Menú Desktop */}
           <ul className="hidden md:flex gap-6 text-sm">
             <li>
-              <Link href="/faqs" className="hover:text-gray-400 px-2">
-                FAQs
+              <Link href="/firmwares" className="hover:text-gray-400 px-2">
+                FW
+              </Link>
+            </li>
+            <li>
+              <Link href="/compatibility" className="hover:text-gray-400 px-2">
+                Compat
               </Link>
             </li>
             <li>
@@ -57,27 +63,42 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="/firmwares" className="hover:text-gray-400 px-2">
-                Firmwares
-              </Link>
-            </li>
-            <li>
               <Link href="/accessories" className="hover:text-gray-400 px-2">
-                Accessories
+                ACCS
               </Link>
             </li>
-            <li>
-              <Link href="/specs" className="hover:text-gray-400 px-2">
-                Specs
-              </Link>
+            <li className="relative">
+              <button onClick={() => setMoreOpen(!moreOpen)} className="hover:text-gray-400 px-2">
+                More ▾
+              </button>
+              {moreOpen && (
+                <div className="absolute top-full left-0 bg-gray-700 p-2 rounded shadow-lg z-10">
+                  <Link
+                    href="/faqs"
+                    className="block hover:text-gray-400"
+                    onClick={() => setMoreOpen(false)}
+                  >
+                    FAQs
+                  </Link>
+                  <Link
+                    href="/specs"
+                    className="block hover:text-gray-400 mt-2"
+                    onClick={() => setMoreOpen(false)}
+                  >
+                    Specs
+                  </Link>
+                </div>
+              )}
             </li>
           </ul>
+
           {/* Botón de modo oscuro (Desktop) */}
           <div className="hidden md:flex items-center">
             <button onClick={toggleDarkMode} className="retro-button px-3 py-1 text-xs ml-6">
               {darkMode ? "☀️" : "🌙"}
             </button>
           </div>
+
           {/* Botón hamburguesa (Móvil) */}
           <div className="md:hidden">
             <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl">
@@ -86,32 +107,62 @@ export default function Navbar() {
           </div>
         </nav>
       </div>
+
       {/* Menú móvil */}
       {menuOpen && (
         <div className="bg-gray-900 text-white px-4 py-4">
           <ul className="flex flex-col gap-4">
             <li>
-              <Link href="/faqs" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
-                FAQs
+              <Link
+                href="/firmwares"
+                className="hover:text-gray-400"
+                onClick={() => setMenuOpen(false)}
+              >
+                FW
               </Link>
             </li>
             <li>
-              <Link href="/guides" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
+              <Link
+                href="/compatibility"
+                className="hover:text-gray-400"
+                onClick={() => setMenuOpen(false)}
+              >
+                Compat
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guides"
+                className="hover:text-gray-400"
+                onClick={() => setMenuOpen(false)}
+              >
                 Guides
               </Link>
             </li>
             <li>
-              <Link href="/firmwares" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
-                Firmwares
+              <Link
+                href="/accessories"
+                className="hover:text-gray-400"
+                onClick={() => setMenuOpen(false)}
+              >
+                ACCS
               </Link>
             </li>
             <li>
-              <Link href="/accessories" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
-                Accessories
+              <Link
+                href="/faqs"
+                className="hover:text-gray-400"
+                onClick={() => setMenuOpen(false)}
+              >
+                FAQs
               </Link>
             </li>
             <li>
-              <Link href="/specs" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
+              <Link
+                href="/specs"
+                className="hover:text-gray-400"
+                onClick={() => setMenuOpen(false)}
+              >
                 Specs
               </Link>
             </li>
