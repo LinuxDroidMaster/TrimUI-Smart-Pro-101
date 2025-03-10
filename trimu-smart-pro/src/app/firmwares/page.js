@@ -95,10 +95,24 @@ export default function FirmwaresPage() {
           firmwares={["MinUI"]}
         />
       </div>
+
+      {/* Section 4: Wikis */}
+      <h2 className="text-2xl font-bold text-retroBlue mb-4">📚 Wikis</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <WikiCard
+          title="CrossMix‑OS Wiki"
+          link="https://github.com/cizia64/CrossMix-OS/wiki"
+        />
+        <WikiCard
+          title="General TSP Wiki"
+          link="https://github.com/Hoo-Cognito/Other-Handheld-Repos/wiki/Trimui-Smart-Pro"
+        />
+      </div>
     </div>
   );
 }
 
+// Reusable Firmware Card Component with Optional Badge(s)
 function FirmwareCard({ title, description, link, badge }) {
   return (
     <div className="border-4 border-black p-4 bg-retroBlue text-white text-center">
@@ -184,6 +198,23 @@ function ToolCard({ title, description, link, firmwares, badge }) {
         className="retro-button mt-2 inline-block"
       >
         Learn More
+      </a>
+    </div>
+  );
+}
+
+// Reusable Wiki Card Component
+function WikiCard({ title, link }) {
+  return (
+    <div className="border-4 border-black p-4 bg-retroBlue text-white text-center">
+      <h3 className="text-lg font-bold">{title}</h3>
+      <a 
+        href={link} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="retro-button mt-2 inline-block"
+      >
+        Visit Wiki
       </a>
     </div>
   );

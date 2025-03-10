@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef(null);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("darkMode");
@@ -29,6 +30,25 @@ export default function Navbar() {
     }
   };
 
+  // Cerrar dropdown More al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (moreRef.current && !moreRef.current.contains(e.target)) {
+        setMoreOpen(false);
+      }
+    };
+
+    if (moreOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [moreOpen]);
+
   return (
     <header className="w-full bg-gray-800 text-white">
       <div className="max-w-5xl mx-auto px-4">
@@ -48,8 +68,8 @@ export default function Navbar() {
           {/* Menú Desktop */}
           <ul className="hidden md:flex gap-6 text-sm">
             <li>
-              <Link href="/firmwares" className="hover:text-gray-400 px-2">
-                FW
+              <Link href="/firmwares" className="hover:text-gray-400 px-2 whitespace-nowrap">
+                FW + Tools
               </Link>
             </li>
             <li>
@@ -67,8 +87,8 @@ export default function Navbar() {
                 ACCS
               </Link>
             </li>
-            <li className="relative">
-              <button onClick={() => setMoreOpen(!moreOpen)} className="hover:text-gray-400 px-2">
+            <li className="relative" ref={moreRef}>
+              <button onClick={() => setMoreOpen(!moreOpen)} className="hover:text-gray-400 px-2 whitespace-nowrap">
                 More ▾
               </button>
               {moreOpen && (
@@ -113,56 +133,32 @@ export default function Navbar() {
         <div className="bg-gray-900 text-white px-4 py-4">
           <ul className="flex flex-col gap-4">
             <li>
-              <Link
-                href="/firmwares"
-                className="hover:text-gray-400"
-                onClick={() => setMenuOpen(false)}
-              >
-                FW
+              <Link href="/firmwares" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
+                FW + Tools
               </Link>
             </li>
             <li>
-              <Link
-                href="/compatibility"
-                className="hover:text-gray-400"
-                onClick={() => setMenuOpen(false)}
-              >
+              <Link href="/compatibility" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
                 Compat
               </Link>
             </li>
             <li>
-              <Link
-                href="/guides"
-                className="hover:text-gray-400"
-                onClick={() => setMenuOpen(false)}
-              >
+              <Link href="/guides" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
                 Guides
               </Link>
             </li>
             <li>
-              <Link
-                href="/accessories"
-                className="hover:text-gray-400"
-                onClick={() => setMenuOpen(false)}
-              >
+              <Link href="/accessories" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
                 ACCS
               </Link>
             </li>
             <li>
-              <Link
-                href="/faqs"
-                className="hover:text-gray-400"
-                onClick={() => setMenuOpen(false)}
-              >
+              <Link href="/faqs" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
                 FAQs
               </Link>
             </li>
             <li>
-              <Link
-                href="/specs"
-                className="hover:text-gray-400"
-                onClick={() => setMenuOpen(false)}
-              >
+              <Link href="/specs" className="hover:text-gray-400" onClick={() => setMenuOpen(false)}>
                 Specs
               </Link>
             </li>

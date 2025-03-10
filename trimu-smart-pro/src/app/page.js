@@ -33,12 +33,6 @@ export default function Home() {
           <p className="text-lg text-retroYellow dark:text-retroBlue mb-4">
             Your source for the best tutorials and videos!
           </p>
-          <a
-            href="/guides"
-            className="retro-button w-52 text-center text-sm font-bold py-2 px-4 border-4 border-black shadow-lg bg-retroBlue text-white"
-          >
-            Start
-          </a>
         </div>
 
         {/* Imagen y botón de compra */}
@@ -71,7 +65,7 @@ export default function Home() {
               Icon={FaBook}
             />
             <SectionCard 
-              title="FW" 
+              title="FW + Tools" 
               description="Latest firmware updates." 
               link="/firmwares" 
               Icon={FaMicrochip}
