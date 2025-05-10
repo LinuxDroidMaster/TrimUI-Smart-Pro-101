@@ -38,7 +38,7 @@ export default function FirmwaresPage() {
           link="https://github.com/shauninman/MinUI/releases" 
         />
         <FirmwareCard 
-          title="MinUI Next" 
+          title="NextUI" 
           description="An improved version of MinUI with smoother performance." 
           link="https://github.com/ro8inmorgan/MinUI/releases" 
         />
